@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Crear perfil de permiso</title>
+    </head>
+    <body>
+        <h1>Registra aca los nuevos perfiles de permisos</h1>
+        <form name="insertar_contacto" action="/recibirRegistro" method="POST">
+            <fieldset>
+                <legend>Ingresa los datos del perfil de permisos</legend>
+                <label for="nombre">Nombre: </label> 
+                <input type="text" name="nombre" id="nombre" />
+                <br/>
+                <label for="descripcion">Descripción: </label> 
+                <input type="text" name="descripcion" id="descripcion" />
+                <br/>
+                <input type="hidden" name="formulario" value="permisos">
+                <input type="submit" value="Regístrate"/>
+            </fieldset>
+        </form>
+    </body>
+</html>

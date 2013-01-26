@@ -1,0 +1,15 @@
+[16/Jan/2013:03:29:31] ENGINE Listening for SIGTERM.
+[16/Jan/2013:03:29:31] ENGINE Bus STARTING
+[16/Jan/2013:03:29:31] ENGINE Started monitor thread '_TimeoutMonitor'.
+[16/Jan/2013:03:29:32] ENGINE Serving on 0.0.0.0:8099
+[16/Jan/2013:03:29:32] ENGINE Bus STARTED
+[16/Jan/2013:03:34:41] ENGINE Listening for SIGTERM.
+[16/Jan/2013:03:34:41] ENGINE Bus STARTING
+[16/Jan/2013:03:34:41] ENGINE Started monitor thread '_TimeoutMonitor'.
+[16/Jan/2013:03:34:41] ENGINE Serving on 0.0.0.0:8099
+[16/Jan/2013:03:34:41] ENGINE Bus STARTED
+[16/Jan/2013:03:36:43] ENGINE Listening for SIGTERM.
+[16/Jan/2013:03:36:43] ENGINE Bus STARTING
+[16/Jan/2013:03:36:43] ENGINE Started monitor thread '_TimeoutMonitor'.
+[16/Jan/2013:03:36:43] ENGINE Serving on 0.0.0.0:8099
+[16/Jan/2013:03:36:43] ENGINE Bus STARTED

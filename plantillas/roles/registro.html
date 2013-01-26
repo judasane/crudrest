@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Crear un nuevo rol</title>
+    </head>
+    <body>
+        <h1>Registra tu nuevo rol</h1>
+        <form name="insertar_rol" action="/recibirRegistro" method="POST">
+            <fieldset> 
+                <legend>Ingresa los datos del nuevo rol</legend>
+                <label for="nombre">Nombre: </label> 
+                <input type="text" name="nombre" id="nombre" />
+                <br/>
+                <label for="descripcion">Descripción: </label> 
+                <input type="text" name="descripcion" id="descripcion" />
+                <br/>
+                <label for="permisos">Perfil de permisos: </label> 
+                <select name="permisos" multiple="true">
+                    <!--opciones-->
+                </select>
+                <input type="hidden" name="formulario" value="roles">
+                <input type="submit" value="Crear nuevo rol"/>
+            </fieldset>
+        </form>
+    </body>
+</html>
