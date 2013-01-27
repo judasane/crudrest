@@ -1,13 +1,6 @@
-import cherrypy
-from cherrypy.lib.cptools import accept
-from models import Photoblog
-from lib import conf
-from lib.tools import find_acceptable_within
+# -*- coding: utf-8 -*-
+import json
+diccionarioso=json.loads('{"1":{"nombre":"Juan","apellido":"Sánchez","Username":"Judasane","Email":"judasane@gmail.com"}, "2":{"nombre":"Violeta","apellido":"Sánchez","Username":"VioSaGa","Email":"viosaga@gmail.com"}}')
+print type(diccionarioso)
+print diccionarioso["2"]["nombre"]
 
-class Resource(object):
-    def handle_GET(self, obj_id):
-        best = accept(['application/xml', 'application/atom+xml',
-                        'text/json', 'text/x-json',
-                        'application/json'])
-                        
-                        

@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
 import cherrypy
-import indice
+from inicio import Inicio
 import os
+from indice import SitioWeb
 
 #Cambio el puerto y set de caracteres por defecto de la aplicacion
 cherrypy.config.update("configuracion.conf")
 
 
-sitio = indice.SitioWeb()
+#inicio = Inicio()
+inicio=SitioWeb()
 
-cherrypy.quickstart(sitio)
+cherrypy.quickstart(inicio)
 
-#Esto es un comentario
-
-    
