@@ -37,8 +37,9 @@ def listar(modulo):
     return retorno
 
 def eliminar(modulo,id):
-    db=database.DatabaseManager("WeBD","MySql")
+    db=database.DatabaseManager()
     return db.eliminar(modulo,id)
 
 if __name__ == "__main__":
-    print llenarTabla("users")
+    pass
+

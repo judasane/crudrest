@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import database
-
+import os
 def llenarSelectBD(tabla):
     """Llena un select con los nombres de una tabla.
 
@@ -11,7 +11,7 @@ def llenarSelectBD(tabla):
     un select
     """
 
-    bd = database.DatabaseManager("webd", "MySql")
+    bd = database.DatabaseManager()
     dicc={}
     lista=bd.obtenerDatos(tabla)
     for registro in lista:
@@ -24,10 +24,10 @@ def llenarSelectBD(tabla):
 def llenarSelect(diccionario):
     """Llena un select con los valores de un diccionario.
 
-    Recibe como parÃ¡metro un diccionario con el formato {"nombre":"valor"}, con
+    Recibe como parámetro un diccionario con el formato {"nombre":"valor"}, con
     los que se llenarÃ¡ el select.
 
-    Retorna un string con el cÃ³digo html listo para emplazar en el contenido de
+    Retorna un string con el código html listo para emplazar en el contenido de
     un select
     """
 
@@ -50,7 +50,7 @@ def llenarTablaBD(tabla,listaCampos,ud=0):
     Retorna un string con una tabla html que contiene los registros de la tabla
     indicada
     """
-    bdm = database.DatabaseManager("webd", "MySql")
+    bdm = database.DatabaseManager()
     listaDiccionarios=bdm.obtenerDatos(tabla)
 
     listaResultado=[listaCampos]
@@ -103,14 +103,7 @@ def llenarTabla(listaTabla):
     html+="</table>"
     return html
 
-
 if __name__ == "__main__":
-  #  lista=[["ID","Nombre","Apellido"],["1","Juan","Sanchez"],["2","Violeta","Sanchez"]]
-#    cadena= llenarTabla(lista)
-    lista=[{"id":"1","nombre":"Juan","apellido":"Sanchez"},
-           {"id":"2","nombre":"Pepe","apellido":"Sanchez"}]
-    listaNombres=["ID","Nombre","Apellido"]
-
-    print llenarTablaBD("users",listaNombres).decode("UTF-8")
-    
+    print os.environ["PORT"] 
+    print os.environ["IP"] 
     

@@ -8,7 +8,6 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 Base = declarative_base()
-
 class Usuario(Base):
     "Inicializa el objeto Usuario con los datos pertinentes"
     
@@ -123,13 +122,9 @@ class DatabaseManager:
     Session = None
     ses = None
     
-    def __init__(self, esquema, motor):
-        if motor.lower() == "mysql":
-			if os.name == "posix":
-				clave = "noentrar"
-			else:
-				clave = ""
-			engine = create_engine("mysql://root:" + clave + "@127.0.0.1/" + esquema + "?charset=utf8", echo=False)
+    def __init__(self):
+        clave = "Pruebas2013!"
+        engine = create_engine("mysql://sibismark:" + clave + "@sibismark.db.10388322.hostedresource.com/sibismark" + "?charset=utf8", echo=False)
         self.Session = sessionmaker(bind=engine)
         self.ses = self.Session()
 
@@ -232,6 +227,6 @@ class DatabaseManager:
        
 
 if __name__ == "__main__":
-    dbmm = DatabaseManager("WeBD", "MySql")
+    dbmm = DatabaseManager()
     print dbmm.update(82,{"email":"jochepe@gmail.com","apellido":"cambiado"})
     
