@@ -9,17 +9,18 @@ class DatabaseManager:
     """
     Clase que se encarga de gestionar las comunicaciones con la base de datos.
     
-    Recibe como parámetros el esquema y el motor.
     """
     Session = None
     ses = None
     
-    def __init__(self):
-        clave = "Pruebas2013!"
+    def __init__(self, clave="Pruebas2013!"):
+        
         engine = create_engine("mysql://sibismark:" + clave + "@sibismark.db.10388322.hostedresource.com/sibismark" + "?charset=utf8", echo=False)
         self.Session = sessionmaker(bind=engine)
         self.ses = self.Session()
         
+    
+    
     def obtenerDatos(self, tabla):
         """
         Devuelve los datos de una tabla por medio de una lista.
@@ -119,8 +120,37 @@ class DatabaseManager:
 #            retorno = "Ha ocurrido un error al intentar eliminar:", e
         return retorno
        
+       
+       
+    def obtenerDatosJson(self, tabla):
+        """
+        Devuelve los datos de una tabla por medio de un diccionario.
+
+        Recibe como parámetro el nombre de la tabla a la cual acceder.
+
+        Retorna un diccionario de diccionarios cada uno lleno con conjuntos clave-valor
+        que hacen referencia a los atributos de los objetos dto propios de la
+        consulta y con clave igual al id de objeto.
+        """
+        diccionario = {}
+        consulta = None
+        if tabla.lower() == "users":
+            consulta = self.ses.query(Usuario)
+        elif tabla.lower() == "permissions":
+            consulta = self.ses.query(Permission)
+        elif tabla.lower() == "roles":
+            consulta = self.ses.query(Role)
+        for instancia in consulta:
+            dicTemp = instancia.toDict()
+            id=dicTemp["id"]
+            del dicTemp["id"]
+            diccionario[id]=dicTemp
+        return diccionario
 
 if __name__ == "__main__":
     dbmm = DatabaseManager()
-    print json.dump(dbmm.obtenerDatos("users"))
+    hola=json.dumps(dbmm.obtenerDatosJson("roles"),ensure_ascii=False).encode("utf-8")
+    
+    print hola
+    
     

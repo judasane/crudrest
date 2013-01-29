@@ -12,7 +12,6 @@ class SitioWeb:
     @cherrypy.expose
     def index (self , nombre="bienvenido"):
         'Pagina de inicio del sitio web, muestra la ruta que le sea asignada.'
-        print "imprime"
         return templater.leerArchivo(nombre)
     
     

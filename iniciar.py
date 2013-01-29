@@ -8,8 +8,8 @@ from indice import SitioWeb
 cherrypy.config.update("configuracion.conf")
 
 
-#inicio = Inicio()
-inicio=SitioWeb()
+inicio = Inicio()
+#inicio=SitioWeb()
 
 cherrypy.quickstart(inicio)
 

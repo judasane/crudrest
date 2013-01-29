@@ -8,7 +8,11 @@ def leerArchivo(nombre):
     return html
     
 def llenarPlantilla(nombreArchivo,dicLlenador):
-    
+    """
+    Recibe como parámetro un diccionario de la forma clave-valor, en el que la
+    clave hace referencia a un marcador (comentario) a cambiar en un archivo
+    html plano
+    """
     html=leerArchivo(nombreArchivo)
     for key in dicLlenador.keys():
         html=html.replace("<!--"+key+"-->",dicLlenador[key])

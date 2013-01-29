@@ -1,25 +1,15 @@
-
+# -*- coding: utf-8 -*-
+from database import DatabaseManager
+import json
 
 def GET(entidad):
     """Devuelve un objeto Json con objetos del tipo de la entidad"""
+    dbman=DatabaseManager()
+    #return json.dumps(dbman.obtenerDatosJson(entidad))
+    return json.dumps(dbman.obtenerDatosJson(entidad),ensure_ascii=False).encode("utf-8")
+   
     
-    
-    
-    dic={}
-    lista=[]
-    retorno=""
-    dicTablas={"usuarios":"users","roles":"roles","permisos":"permissions"}
-    
-    if modulo=="usuarios".lower():
-        lista=["ID","Nombre","Apellido","Username","Email"]
-    elif modulo=="roles".lower():
-        lista=["ID","Nombre","Descripcion"]
-    elif modulo=="permisos".lower():
-        lista=["ID","Nombre","Descripcion"]
-        
-    dic["tabla"]=genHtml.llenarTablaBD(dicTablas[modulo],lista,True)
-    
-    retorno=templater.llenarPlantilla("general/listar", dic)
-    return retorno
+if __name__ == "__main__":
+    print str(GET("roles"))
     
     
