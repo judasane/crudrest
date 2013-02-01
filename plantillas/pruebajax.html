@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function loadXMLDoc(entidad){
+                var obj=null;
+                var xmlhttp;
+                if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp=new XMLHttpRequest();
+                }
+                else{// code for IE6, IE5
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                
+                
+                xmlhttp.onreadystatechange=function(){
+                    if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                        obj = JSON.parse(xmlhttp.responseText);
+                        var arreglo=obj.valores;
+//                        var long=arreglo.length;
+//                        var cadena='<table border="1"><tr><th>ID</th><th>Nombre</th><th>Descripcion</th></tr>';
+//                        for (var i=0;i<long;i++){
+//                            cadena+="<tr><td>"+arreglo[i].id+"</td>";
+//                            cadena+="<td>"+arreglo[i].nombre+"</td>";
+//                            cadena+="<td>"+arreglo[i].descripcion+"</td>";
+//                            cadena+="</tr>";
+//                        }
+//                        cadena+="</table>"
+                        
+                        document.getElementById("tabla").innerHTML=llenarPermisos(arreglo,entidad);
+                    }
+                }
+                xmlhttp.open("GET","/index/"+entidad,true);
+                xmlhttp.setRequestHeader("Accept","text/json");
+                xmlhttp.setRequestHeader("algo","valor");
+                xmlhttp.send();
+                
+                function llenarPermisos(arreglo,entidad){
+                    var long=arreglo.length;
+                    var cadena='<table border="1"><tr>'
+                    
+                    function finRenglones(id){
+                        
+                        var enlacePng="https://dl.dropbox.com/u/36392791/";
+                        var enlace=entidad+"/"+id;
+                        var editar="<img onclick='editar("+id+")' alt='Editar' title='Editar' src='"+enlacePng+ "edit.png'>";
+                        var borrar="<img onclick='eliminar("+id+")' alt='Borrar' title='Borrar' src='"+enlacePng+ "delete.png'>";
+                                               
+                        var finRenglon="<td>"+editar+"</td><td>"+borrar+"</td></tr>"; 
+                        return finRenglon;
+                    }
+                    
+                    
+                    if (entidad=="permissions"||entidad=="roles"){
+                        cadena+='<th>ID</th><th>Nombre</th><th>Descripcion</th></tr>';
+                        for (var i=0;i<long;i++){
+                            cadena+="<tr><td>"+arreglo[i].id+"</td>";
+                            cadena+="<td>"+arreglo[i].nombre+"</td>";
+                            cadena+="<td>"+arreglo[i].descripcion+"</td>";
+                            cadena+=finRenglones(arreglo[i].id);
+                            
+                        }
+                    }
+                    else if (entidad=="users"){
+                        cadena+='<th>ID</th><th>Nombre</th><th>Apellido</th><th>Username</th><th>e-mail</th></tr>';
+                        for (var i=0;i<long;i++){
+                            cadena+="<tr><td>"+arreglo[i].id+"</td>";
+                            cadena+="<td>"+arreglo[i].nombre+"</td>";
+                            cadena+="<td>"+arreglo[i].apellido+"</td>";
+                            cadena+="<td>"+arreglo[i].username+"</td>";
+                            cadena+="<td>"+arreglo[i].email+"</td>";
+                            cadena+=finRenglones(arreglo[i].id);
+                            
+                        }
+                    }
+                    
+                    
+                    cadena+="</table>";
+                    return cadena;
+                }    
+                
+                
+                
+            
+                
+                
+                //var obj = JSON.parse(jsonvar);
+                
+                //document.getElementById("tabla").innerHTML=jsonvar;
+                
+            }
+        </script>
+    </head>
+    <body>
+        <h1>AJAX</h1>
+        <button type="button" onclick="loadXMLDoc('users')">Ver usuarios</button>
+        <button type="button" onclick="loadXMLDoc('roles')">Ver roles</button>
+        <button type="button" onclick="loadXMLDoc('permissions')">Ver permisos</button>
+        <div id="tabla"></div>
+    </body>
+</html>
+

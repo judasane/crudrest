@@ -60,3 +60,6 @@
 {"ts":1359427736680,"patch":[[{"diffs":[[0,"nicio()\n"],[1,"#"],[0,"inicio=S"]],"start1":229,"start2":229,"length1":16,"length2":17}]],"length":286,"saved":false}
 {"contributors":[],"silentsave":true,"ts":1359442572876,"patch":[[{"diffs":[[0,"nicio()\n"],[-1,"#"],[0,"inicio=S"]],"start1":229,"start2":229,"length1":17,"length2":16}]],"length":285,"saved":false}
 {"ts":1359442576902,"patch":[[{"diffs":[[0,"nicio()\n"],[1,"#"],[0,"inicio=S"]],"start1":229,"start2":229,"length1":16,"length2":17}]],"length":286,"saved":false}
+{"contributors":[],"silentsave":true,"ts":1359605181318,"patch":[[{"diffs":[[0,"tart(ini"],[1,"."],[0,"cio)\n\n"]],"start1":272,"start2":272,"length1":14,"length2":15}]],"length":287,"saved":false}
+{"ts":1359605199097,"patch":[[{"diffs":[[0,"cherrypy"],[1," HHola "],[0,"\nfrom in"]],"start1":31,"start2":31,"length1":16,"length2":23}]],"length":294,"saved":false}
+{"contributors":[],"silentsave":true,"ts":1359643188116,"patch":[[{"diffs":[[0,"rypy"],[-1," HHola "],[0,"\nfro"]],"start1":35,"start2":35,"length1":15,"length2":8},{"diffs":[[0,"tart(ini"],[-1,"."],[0,"cio)\n\n"]],"start1":272,"start2":272,"length1":15,"length2":14}]],"length":286,"saved":false}

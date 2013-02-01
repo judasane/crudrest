@@ -2,12 +2,13 @@
 import cherrypy
 from cherrypy.lib.cptools import accept
 import modelo
+import templater
 
 class Inicio:
     "Clase que contiene los metodos principales para mostrar en el sitio web"
     
     @cherrypy.expose
-    def index(self,entidad="nada"):
+    def index(self,entidad="nalada"):
         methods = ('OPTIONS','GET','POST','PUT','DELETE')
         
         method=cherrypy.request.method
@@ -25,21 +26,24 @@ class Inicio:
         else:
             cherrypy.response.headers['Content-Type'] = 'application/json;charset=utf-8'
             respuesta= self.json(entidad)
+            print entidad
+        
+        
         
         return respuesta
             
             
             
-    def json(self,entidad="permissions"):
-        return modelo.GET(entidad)
+    def json(self,entidad):
+        return modelo.getLista(entidad)
     
     
     def html(self,entidad):
-        return "<h1>Todavía no lo hemos desarrollado, aguante tantico!! %s</h1>" % entidad
+        return templater.leerArchivo("pruebajax")
     
     
     if __name__ == "__main__":
         
-       print modelo.GET("roles")
+       print modelo.getLista("roles")
             
 

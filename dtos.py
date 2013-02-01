@@ -73,7 +73,7 @@ class Role(Base):
         return dic
         
 class Permission(Base):
-    __tablename__ = 'Permissions'
+    __tablename__ = 'permissions'
 
     id = Column(Integer, primary_key=True)
     nombre = Column(String(50))

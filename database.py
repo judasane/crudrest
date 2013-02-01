@@ -132,7 +132,8 @@ class DatabaseManager:
         que hacen referencia a los atributos de los objetos dto propios de la
         consulta y con clave igual al id de objeto.
         """
-        diccionario = {}
+        lista=[]
+       # diccionario = {}
         consulta = None
         if tabla.lower() == "users":
             consulta = self.ses.query(Usuario)
@@ -142,14 +143,16 @@ class DatabaseManager:
             consulta = self.ses.query(Role)
         for instancia in consulta:
             dicTemp = instancia.toDict()
-            id=dicTemp["id"]
-            del dicTemp["id"]
-            diccionario[id]=dicTemp
-        return diccionario
+            lista.append(dicTemp)
+            
+           # id=dicTemp["id"]
+            #del dicTemp["id"]
+            #diccionario[id]=dicTemp
+        return lista
 
 if __name__ == "__main__":
     dbmm = DatabaseManager()
-    hola=json.dumps(dbmm.obtenerDatosJson("roles"),ensure_ascii=False).encode("utf-8")
+    hola='{"valores":'+json.dumps(dbmm.obtenerDatosJson("users"),ensure_ascii=False).encode("utf-8")+"}"
     
     print hola
     
